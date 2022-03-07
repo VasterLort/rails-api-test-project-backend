@@ -1,7 +1,8 @@
 
-class Api::V1::PostsController < ApplicationController
+class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: %i[show update destroy]
-
+  
   # GET /posts
   def index
     @posts = Post.all
@@ -23,7 +24,7 @@ class Api::V1::PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      render json: @post, status: :created, location: api_v1_posts_path(@post)
+      render json: @post, status: :created, location: posts_path(@post)
     else
       render json: @post.errors, status: :unprocessable_entity
     end
