@@ -44,3 +44,5 @@ gem 'pry-byebug'
 
 gem 'devise'
 gem 'devise-jwt'
+
+gem 'figaro'
