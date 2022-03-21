@@ -1,1 +1,1 @@
-after_confirmation_redirect_url: "http://localhost:8080/posts"
+after_confirmation_redirect_url: "http://localhost:8080/sign_in"

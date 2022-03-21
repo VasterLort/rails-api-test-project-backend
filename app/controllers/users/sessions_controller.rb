@@ -3,11 +3,18 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-  def respond_with(_resource, _opts = {})
-    render json: {
-      message: 'You are logged in.',
-      user: current_user
-    }, status: :ok
+  def respond_with(resource, _opts = {})
+    if current_user
+      render json: {
+        success: true,
+        user: current_user,
+        message: 'You are logged in.'
+      }, status: :ok
+    else
+      render json: {
+        message: 'Invalid Login or password.'
+      }, status: :unauthorized
+    end
   end
 
   def respond_to_on_destroy
